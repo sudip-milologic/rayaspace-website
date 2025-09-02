@@ -2,6 +2,7 @@
 
 import { useEffect, useState } from "react";
 import Image from "next/image";
+import Link from "next/link";
 
 export default function Header() {
   const [isOpen, setIsOpen] = useState(false);
@@ -34,6 +35,7 @@ export default function Header() {
     { href: "#features", label: "Features" },
     { href: "#our-spaces", label: "Our Spaces" },
     { href: "#pricing", label: "Pricing" },
+    { href: "/blogs", label: "Blogs" },
     { href: "#contact-us", label: "Contact Us" },
   ];
 
@@ -41,7 +43,7 @@ export default function Header() {
     <header className="sticky top-0 bg-white z-[30]">
       <div className="lg:py-4 lg:px-28 pt-8 pb-5 px-5 flex items-center justify-between z-[50]">
         {/* Logo */}
-        <a href="#">
+        <Link href="/" scroll={false}>
           <Image
             src="/images/logo/Raya-logo.svg"
             alt="Raya Logo"
@@ -50,7 +52,7 @@ export default function Header() {
             className="w-10 lg:w-full"
             priority
           />
-        </a>
+        </Link>
 
         {/* Navigation */}
         <nav
@@ -61,8 +63,9 @@ export default function Header() {
           <ul className="flex lg:flex-row flex-col items-center lg:text-base text-xs lg:gap-16 gap-4 font-medium">
             {navLinks.map(({ href, label }) => (
               <li key={href}>
-                <a
+                <Link
                   href={href}
+                  scroll={false}
                   onClick={() => setIsOpen(false)}
                   className={`nav-link text-[#444D4F] hover:text-[#061214] ${
                     activeSection === href.replace("#", "")
@@ -71,7 +74,7 @@ export default function Header() {
                   }`}
                 >
                   {label}
-                </a>
+                </Link>
               </li>
             ))}
           </ul>

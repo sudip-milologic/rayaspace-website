@@ -1,8 +1,8 @@
 import type { Metadata } from "next";
 import { Geist, Geist_Mono } from "next/font/google";
-import "./globals.css";
-import Header from "./_components/Header";
-import Footer from "./_components/Footer";
+import "../globals.css";
+import Header from "../_components/Header";
+import Footer from "../_components/Footer";
 
 const geistSans = Geist({
   variable: "--font-geist-sans",
@@ -17,6 +17,9 @@ const geistMono = Geist_Mono({
 export const metadata: Metadata = {
   title: "RayaSpace | Best Co-working Space in Kathmandu, Nepal",
   description: "Best Co-working Space in Kathmandu, Nepal",
+  icons: {
+    icon: "/favicon.svg",
+  },
 };
 
 export default function RootLayout({
