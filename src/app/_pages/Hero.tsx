@@ -1,15 +1,20 @@
 import React from "react";
+import Image from "next/image";
 
 const Hero = () => {
   return (
     <div id="home">
       <div className="mt-4 relative">
         <div className="w-full bg-black h-fit">
-          <img
-            data-src="/images/hero/raya-hero.png"
-            src="/images/hero/raya-hero-lazy.png"
-            alt=""
-            className="w-full opacity-40 lazy-load"
+          <Image
+            src="/images/hero/raya-hero.png"
+            alt="Raya Space coworking environment"
+            width={1920}
+            height={1080}
+            priority
+            className="w-full opacity-40"
+            placeholder="blur"
+            blurDataURL="/images/hero/raya-hero-lazy.png"
           />
         </div>
         <div className="absolute left-0 right-0 top-0 lg:top-[25%] transform translate-y-1/2">
