@@ -1,7 +1,8 @@
+import BlogsComponent from "@/app/_pages/Blogs/BlogsComponent";
 import React from "react";
 
 const page = () => {
-  return <div>This is Blogs Page</div>;
+  return <BlogsComponent />;
 };
 
 export default page;

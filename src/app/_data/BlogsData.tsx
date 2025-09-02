@@ -1185,3 +1185,32 @@ export const SingleBlogsData = {
   success: true,
   status: 200,
 };
+
+export const resourcesCatData = [
+  { id: "1", label: "All", value: "All" },
+  {
+    id: "2",
+    label: "Web Design",
+    value: "WEB_DESIGN",
+  },
+  {
+    id: "3",
+    label: "Back-end",
+    value: "BACKEND",
+  },
+  {
+    id: "4",
+    label: "Product Design",
+    value: "PRODUCT_DESIGN",
+  },
+  {
+    id: "5",
+    label: "Wordpress",
+    value: "WORDPRESS",
+  },
+  {
+    id: "6",
+    label: "SEO",
+    value: "SEO",
+  },
+];
