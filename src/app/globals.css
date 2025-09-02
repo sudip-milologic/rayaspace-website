@@ -1,6 +1,5 @@
 @import "tailwindcss";
 @import url("https://fonts.googleapis.com/css2?family=Raleway&display=swap");
-@import url("https://fonts.googleapis.com/css2?family=Montserrat&display=swap");
 
 :root {
   --background: #ffffff;
@@ -11,6 +10,17 @@
   font-family: "Begum-Regular";
   src: url("../../assets/fonts/Begum-W03-Regular.ttf") format("truetype");
 }
+
+@font-face {
+  font-family: "Montserrat";
+  src: url("../../assets/fonts/Montserrat-Regular.ttf") format("truetype");
+}
+
+@font-face {
+  font-family: "Raleway";
+  src: url("../../assets/fonts/Raleway-Regular.ttf") format("truetype");
+}
+
 :root {
   --dark: #061214;
   --raleway: "Raleway", sans-serif;
@@ -33,7 +43,8 @@ body {
 }
 
 .font-montserrat {
-  font-family: "Montserrat", sans-serif;
+   font-family: "Montserrat", sans-serif;
+  font-optical-sizing: auto;
 }
 
 .bg-primary {

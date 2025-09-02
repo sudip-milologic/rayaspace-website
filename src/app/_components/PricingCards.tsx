@@ -39,7 +39,7 @@ const PricingCard: React.FC<PricingCardProps> = ({
       </div>
 
       {/* Pricing Section */}
-      <div className="px-6 mt-8 lg:h-[262px]">
+      <div className="px-6 mt-8 lg:h-[262px] font-number">
         {pricing.map((price, index) => (
           <div
             key={index}
