@@ -20,10 +20,9 @@ const FloorPlans = () => {
               1. Ground Floor
             </p>
             <p className="text-[#010A0599] lg:text-base text-sm font-begum lg:pr-24">
-              The ground floor of Raya Space is designed with practicality in
-              mind and includes Startup Room 1, the Community Room, the
-              Founders' Room, and a restroom. Room measurements are clearly
-              indicated on the floor plan for easy reference.
+              {
+                "The ground floor of Raya Space is designed with practicality in mind and includes Startup Room 1, the Community Room, the Founders' Room, and a restroom. Room measurements are clearly indicated on the floor plan for easy reference."
+              }
             </p>
           </div>
 

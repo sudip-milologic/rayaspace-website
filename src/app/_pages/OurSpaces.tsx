@@ -10,8 +10,9 @@ const OurSpaces = () => {
             Your Ideal Workspace
           </p>
           <p className="lg:text-xl text-sm lg:leading-[23.48px] leading-[28px] lg:mt-6 mt-3 text-[#010A0599]">
-            Whether you're an entrepreneur, freelancer, or remote worker, we
-            have the perfect spot for you.
+            {
+              "Whether you're an entrepreneur, freelancer, or remote worker, we have the perfect spot for you."
+            }
           </p>
         </div>
 
@@ -53,7 +54,7 @@ const OurSpaces = () => {
                   dynamic rooms
                 </p>
                 <p className="text-white lg:text-[40px] text-[22px] lg:leading-[49px] font-begum capitalize">
-                  versatility at it's best
+                  {"versatility at it's best"}
                 </p>
               </div>
             </div>
