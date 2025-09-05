@@ -14,7 +14,7 @@ const ContactUs = () => {
               loading="lazy"
             ></iframe>
           </div>
-          <div className="w-[35%] whitespace-nowrap">
+          <div className="w-full lg:w-[35%] whitespace-nowrap">
             <p className="lg:text-5xl text-[28px] lg:text-left text-center lg:leading-[58.75px] xl:leading-[34.27px] font-begum">
               Get In Touch
             </p>
