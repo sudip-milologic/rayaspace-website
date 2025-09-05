@@ -4,7 +4,7 @@ import Image from "next/image";
 const About = () => {
   return (
     <div id="about">
-      <div className="relative lg:py-[120px] py-14 bg-primary">
+      <div className="relative lg:py-[120px] py-14 bg-primary overflow-hidden">
         <div className=" z-10 lg:block hidden w-full ">
           <Image
             src="/images/vector/Vector 1.svg"

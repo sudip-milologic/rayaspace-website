@@ -70,7 +70,11 @@ export default function Header() {
         {/* Navigation */}
         <nav
           className={`lg:px-0 lg:block lg:static fixed left-0 right-0 transition-all ease-out duration-500 ${
-            isOpen ? "top-20 bg-white p-8 text-center" : "top-[-500%]"
+            isOpen
+              ? isSpecialPage
+                ? "top-20 bg-[#061214] p-8 text-center"
+                : "top-20 bg-white p-8 text-center"
+              : "top-[-500%]"
           }`}
         >
           <ul className="flex lg:flex-row flex-col items-center lg:text-base text-xs lg:gap-16 gap-4 font-medium">
@@ -104,7 +108,11 @@ export default function Header() {
           className={`lg:hidden block ${isOpen ? "hidden" : ""}`}
         >
           <Image
-            src="/images/icons/menu-alt-icon.svg"
+            src={`${
+              isSpecialPage
+                ? "/images/icons/menu.svg"
+                : "/images/icons/menu-alt-icon.svg"
+            }`}
             alt="Menu"
             width={24}
             height={24}
@@ -116,7 +124,11 @@ export default function Header() {
           className={`lg:hidden block ${isOpen ? "" : "hidden"}`}
         >
           <Image
-            src="/images/icons/menu-close-icon.svg"
+            src={`${
+              isSpecialPage
+                ? "/images/icons/close-dark.svg"
+                : "/images/icons/menu-close-icon.svg"
+            }`}
             alt="Close"
             width={24}
             height={24}
