@@ -33,7 +33,7 @@ const BlogsPageHero = ({ blogsData }: { blogsData: OutputData.Blog }) => {
         </div>
       </div>
 
-      <div className=" py-6 lg:py-20 h-fit">
+      <div className=" py-6 lg:py-20 lg:pl-2 h-fit">
         <div className="relative h-[250px] md:h-[400px] lg:h-[640px]  rounded-3xl">
           {blogsData?.attachment ? (
             <Image

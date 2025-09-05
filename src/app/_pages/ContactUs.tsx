@@ -4,19 +4,17 @@ import Image from "next/image";
 const ContactUs = () => {
   return (
     <div id="contact-us">
-      <div className="lg:px-28 lg:py-[120px] py-[60px] px-5 bg-white">
-        <div className="flex lg:flex-row flex-col-reverse lg:items-center gap-x-24">
-          <Image
-            src="/images/contact-us/basemap-image.svg"
-            alt="Location map"
-            width={600}
-            height={400}
-            loading="lazy"
-            className="lg:border-[20px] border-[10px] border-[#D6EEE2] lg:mb-0 mb-8 lg:w-1/2"
-            placeholder="blur"
-            blurDataURL="/images/contact-us/lazy-basemap.png"
-          />
-          <div>
+      <div className="lg:px-36 lg:py-[120px] py-[60px] px-5 bg-white w-full">
+        <div className="flex lg:flex-row flex-col-reverse lg:items-center justify-between gap-10 ">
+          <div className="w-full flex-1 border-4 border-[#455D58]">
+            <iframe
+              src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3532.211260!2d85.336609!3d27.7443201!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x39eb1969376306a7%3A0xda330ac396982fc9!2sRaya%20Space!5e0!3m2!1sen!2snp!4v1691234567890"
+              width="100%"
+              height="400"
+              loading="lazy"
+            ></iframe>
+          </div>
+          <div className="w-[35%] whitespace-nowrap">
             <p className="lg:text-5xl text-[28px] lg:text-left text-center lg:leading-[58.75px] xl:leading-[34.27px] font-begum">
               Get In Touch
             </p>

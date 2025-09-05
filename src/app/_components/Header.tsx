@@ -3,10 +3,12 @@
 import { useEffect, useState } from "react";
 import Image from "next/image";
 import Link from "next/link";
+import { usePathname } from "next/navigation"; // 👈 import this
 
 export default function Header() {
   const [isOpen, setIsOpen] = useState(false);
   const [activeSection, setActiveSection] = useState("");
+  const pathname = usePathname(); // 👈 get current route
 
   useEffect(() => {
     const sections = document.querySelectorAll<HTMLElement>("div[id]");
@@ -31,21 +33,32 @@ export default function Header() {
   }, [isOpen]);
 
   const navLinks = [
-    { href: "#about", label: "About" },
-    { href: "#features", label: "Features" },
-    { href: "#our-spaces", label: "Our Spaces" },
-    { href: "#pricing", label: "Pricing" },
+    { href: "/#about", label: "About" },
+    { href: "/#features", label: "Features" },
+    { href: "/#our-spaces", label: "Our Spaces" },
+    { href: "/#pricing", label: "Pricing" },
     { href: "/blogs", label: "Blogs" },
-    { href: "#contact-us", label: "Contact Us" },
+    { href: "/#contact-us", label: "Contact Us" },
   ];
 
+  const isSpecialPage =
+    pathname.startsWith("/blogs") || pathname.startsWith("/terms-of-services");
+
   return (
-    <header className="sticky top-0 bg-white z-[30]">
+    <header
+      className={`sticky top-0 z-[30] transition-colors duration-300 ${
+        isSpecialPage ? "bg-[#061214] text-white" : "bg-white text-[#444D4F]"
+      }`}
+    >
       <div className="lg:py-4 lg:px-28 pt-8 pb-5 px-5 flex items-center justify-between z-[50]">
         {/* Logo */}
         <Link href="/" scroll={false}>
           <Image
-            src="/images/logo/Raya-logo.svg"
+            src={`${
+              isSpecialPage
+                ? "/images/logo/logo-white.svg"
+                : "/images/logo/Raya-logo.svg"
+            }`}
             alt="Raya Logo"
             width={40}
             height={40}
@@ -65,11 +78,16 @@ export default function Header() {
               <li key={href}>
                 <Link
                   href={href}
-                  scroll={false}
                   onClick={() => setIsOpen(false)}
-                  className={`nav-link text-[#444D4F] hover:text-[#061214] ${
+                  className={`nav-link ${
+                    isSpecialPage
+                      ? "text-white hover:text-gray-300"
+                      : "text-[#444D4F] hover:text-[#061214]"
+                  } ${
                     activeSection === href.replace("#", "")
-                      ? "text-[#061214]"
+                      ? isSpecialPage
+                        ? "text-gray-300"
+                        : "text-[#061214]"
                       : ""
                   }`}
                 >

@@ -135,7 +135,7 @@ const Pricing = () => {
           </p>
         </div>
 
-        <div className="lg:mt-16 mt-8 lg:grid grid-cols-2 gap-[30px] z-50">
+        <div className="lg:mt-16 mt-8 grid grid-cols-1 lg:grid-cols-2 gap-[30px] z-50">
           {pricingData.map((card, index) => (
             <PricingCard
               key={index}

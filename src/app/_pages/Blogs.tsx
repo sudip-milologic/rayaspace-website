@@ -7,8 +7,8 @@ const Blogs = () => {
   return (
     <>
       <div className="bg-white px-4 md:px-0">
-        <div className="py-10 md:py-20 lg:py-40">
-          <div className={` text-center pb-10 md:pb-20 lg:pb-40`}>
+        <div className="py-10 md:py-11 lg:py-20">
+          <div className={` text-center pb-10 md:pb-20`}>
             <p className="lg:text-5xl text-[28px] leading-[40px] font-begum">
               Resources for You
             </p>
@@ -31,7 +31,7 @@ const Blogs = () => {
                   title={resources.label}
                   description={shortDescription}
                   imageUrl={resources?.attachment?.url}
-                  link={`/blogs`}
+                  link={`/blogs/${resources.id}`}
                 />
               );
             })}

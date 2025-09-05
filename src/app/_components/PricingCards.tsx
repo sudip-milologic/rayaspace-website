@@ -31,7 +31,7 @@ const PricingCard: React.FC<PricingCardProps> = ({
       <Carousel images={images} />
 
       {/* Title + Description */}
-      <div className="lg:p-6 p-3 border-b-[0.2px] border-[#8F9495]">
+      <div className="lg:p-6 p-3 border-b-[0.2px] border-[#8F9495] min-h-48">
         <p className="lg:text-[32px] text-[22px] leading-[26.93px] font-begum mt-[14px]">
           {title}
         </p>
