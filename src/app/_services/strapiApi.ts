@@ -81,7 +81,7 @@ class StrapiApiService {
 
   async fetchBlogById(id: string): Promise<StrapiBlog | null> {
     try {
-      let response = await fetch(
+      const response = await fetch(
         `${this.baseUrl}/api/blogs?filters[id][$eq]=${id}&populate=*`,
         {
           headers: {
