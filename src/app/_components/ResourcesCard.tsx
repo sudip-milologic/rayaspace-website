@@ -27,7 +27,7 @@ const ResourceCard: React.FC<ResourceCardProps> = ({
               alt={title}
               width={361.33}
               height={220}
-              className="h-full w-full object-contain rounded-3xl"
+              className="h-full w-full object-cover rounded-3xl"
             />
           ) : (
             <div className="h-full w-full bg-[#d9d9d9] rounded-3xl bg-cover bg-center"></div>

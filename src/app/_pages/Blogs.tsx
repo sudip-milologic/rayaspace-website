@@ -1,9 +1,38 @@
 "use client";
 import dynamic from "next/dynamic";
 import { blogsData } from "../_data/BlogsData";
+import { strapiApi } from "../_services/strapiApi";
+import { useEffect, useState } from "react";
 const ResourcesCard = dynamic(() => import("@/app/_components/ResourcesCard"));
 
 const Blogs = () => {
+  const [blogs, setBlogs] = useState<OutputData.Blog[]>([]);
+  const [loading, setLoading] = useState<boolean>(false);
+
+  useEffect(() => {
+    const fetchBlogs = async () => {
+      try {
+        setLoading(true);
+        const strapiBlogs = await strapiApi.fetchBlogs();
+
+        if (strapiBlogs && strapiBlogs.length > 0) {
+          const convertedBlogs = strapiBlogs.map((blog) =>
+            strapiApi.convertToLegacyFormat(blog)
+          );
+          setBlogs(convertedBlogs);
+        }
+      } catch (err) {
+        console.error("Error fetching blogs:", err);
+      } finally {
+        setLoading(false);
+      }
+    };
+
+    fetchBlogs();
+  }, []);
+
+  console.log(blogs);
+
   return (
     <>
       <div className="bg-white px-4 md:px-0">
@@ -17,9 +46,15 @@ const Blogs = () => {
               <br /> in your industry and enables your brand to and also.
             </p>
           </div>
-          {/* Resources cards */}
+          {loading && (
+            <div className="flex justify-center items-center py-4 mb-4">
+              <div className="text-sm text-gray-600">
+                Loading latest blogs...
+              </div>
+            </div>
+          )}
           <div className=" grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-7 items-center px-4 lg:px-7 xl:px-24 2xl:px-28">
-            {blogsData?.data?.slice(0, 3).map((resources) => {
+            {blogs?.slice(0, 3).map((resources) => {
               const description = resources.description;
               const shortDescription =
                 description && description.split(" ").length >= 16

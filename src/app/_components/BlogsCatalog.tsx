@@ -1,16 +1,51 @@
 "use client";
 
-import React, { useEffect, useState } from "react";
-import { blogsData, resourcesCatData } from "@/app/_data/BlogsData";
 import ResourcesCard from "@/app/_components/ResourcesCard";
+import { blogsData, resourcesCatData } from "@/app/_data/BlogsData";
+import { strapiApi } from "@/app/_services/strapiApi";
+import { useEffect, useState } from "react";
+import Spinner from "./shared/Spinner";
 
 const BlogCatalog = () => {
   const [activeCategoryIndex, setActiveCategoryIndex] = useState<number>(0);
   const [activeCategory, setActiveCategory] = useState<string>("all");
   const [featured, setFeatured] = useState<OutputData.Blog>();
+  const [blogs, setBlogs] = useState<OutputData.Blog[]>([]);
+  const [loading, setLoading] = useState<boolean>(false);
+  const [error, setError] = useState<string>("");
 
-  const dataItems = blogsData;
+  const dataItems = { data: blogs };
 
+  // Fetch blogs from Strapi
+  useEffect(() => {
+    const fetchBlogs = async () => {
+      try {
+        setLoading(true);
+        setError("");
+        const strapiBlogs = await strapiApi.fetchBlogs();
+
+        if (strapiBlogs && strapiBlogs.length > 0) {
+          // Convert Strapi blogs to legacy format for compatibility
+          const convertedBlogs = strapiBlogs.map((blog) =>
+            strapiApi.convertToLegacyFormat(blog)
+          );
+          setBlogs(convertedBlogs);
+        } else {
+          // Fallback to static data if no Strapi data
+          console.warn("No blogs found from Strapi, using static data");
+        }
+      } catch (err) {
+        console.error("Error fetching blogs from Strapi:", err);
+        setError("Failed to load blogs");
+      } finally {
+        setLoading(false);
+      }
+    };
+
+    fetchBlogs();
+  }, []);
+
+  // Set featured blog
   useEffect(() => {
     if (dataItems && dataItems?.data && dataItems?.data?.length > 0) {
       const filtered = dataItems?.data.filter((item) => item.isFeatured);
@@ -50,13 +85,35 @@ const BlogCatalog = () => {
           }  pb-16 `}
         ></div>
 
-        {dataItems && dataItems?.data && dataItems?.data?.length == 0 && (
-          <div className="flex flex-col items-center justify-center gap-2 text-center">
-            <p className="text-dark-darker font-semibold text-xl md:text-2xl lg:text-3xl">
-              Blogs Not Available
-            </p>
+        {loading && (
+          <div className="flex flex-col items-center justify-center gap-2 text-center py-10">
+            <div className="animate-pulse">
+              <p className="text-dark-darker font-semibold text-xl md:text-2xl lg:text-3xl">
+                Loading Blogs...
+              </p>
+            </div>
           </div>
         )}
+
+        {error && (
+          <div className="flex flex-col items-center justify-center gap-2 text-center py-10">
+            <p className="text-red-600 font-semibold text-xl md:text-2xl lg:text-3xl">
+              {error}
+            </p>
+            <p className="text-gray-600 text-sm">Using fallback data</p>
+          </div>
+        )}
+
+        {!loading &&
+          dataItems &&
+          dataItems?.data &&
+          dataItems?.data?.length == 0 && (
+            <div className="flex flex-col items-center justify-center gap-2 text-center">
+              <p className="text-dark-darker font-semibold text-xl md:text-2xl lg:text-3xl">
+                Blogs Not Available
+              </p>
+            </div>
+          )}
 
         <div className=" grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 2xl:grid-cols-4 gap-7">
           {dataItems?.data?.map((resources) => {
