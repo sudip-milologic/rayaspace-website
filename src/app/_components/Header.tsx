@@ -77,7 +77,7 @@ export default function Header() {
               : "top-[-500%]"
           }`}
         >
-          <ul className="flex lg:flex-row flex-col items-center lg:text-base text-xs lg:gap-16 gap-4 font-medium">
+          <ul className="flex lg:flex-row flex-col items-center lg:text-base text-xs lg:gap-8 xl:gap-16 gap-4 font-medium">
             {navLinks.map(({ href, label }) => (
               <li key={href}>
                 <Link

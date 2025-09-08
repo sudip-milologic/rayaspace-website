@@ -54,8 +54,6 @@ class StrapiApiService {
   }
 
   async fetchBlogs(): Promise<StrapiBlog[]> {
-    console.log(process.env.NEXT_PUBLIC_STRAPI_API_TOKEN);
-
     try {
       const response = await fetch(
         `${this.baseUrl}/api/blogs?populate=*&sort[0]=postDate:desc`,
