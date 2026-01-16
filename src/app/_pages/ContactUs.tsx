@@ -51,10 +51,7 @@ const ContactUs = () => {
                     PHONE
                   </p>
                   <p className="lg:text-xl text-sm leading-[23.48px] lg:mt-3 mt-1 font-montserrat">
-                    +977-9857053215
-                  </p>
-                  <p className="lg:text-xl text-sm leading-[23.48px] lg:mt-3 mt-1 font-montserrat">
-                    01-4017515
+                    +977-9851354164
                   </p>
                 </div>
               </div>
